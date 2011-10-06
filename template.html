@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Blog de Fasterize</title>
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+
+			<link href="//fonts.googleapis.com/css?family=Lobster&text=fasterizeaccueilblogcontact" rel="stylesheet" type="text/css" />
+			<link href="//yui.yahooapis.com/combo?3.3.0/build/cssreset/reset-min.css&3.3.0/build/cssfonts/fonts-min.css&3.3.0/build/cssbase/base-min.css&3.3.0/build/cssgrids/grids-min.css" rel="stylesheet" type="text/css" />
+			<!--[if (!IE)|(gte IE 8)]><!-->
+    		<link href="//www.fasterize.com/assets/homepage-datauri.css?1312568626" media="screen" rel="stylesheet" type="text/css" />
+    		<!--<![endif]-->
+    		<!--[if lte IE 7]>
+    		<link href="//www.fasterize.com/assets/homepage.css?1312568626" media="screen" rel="stylesheet" type="text/css" />
+    		<![endif]-->
+
+        <style>
+            #posts {
+                font-size:120%;
+            }
+			#sidebar{
+				margin-top:1em;
+			}
+            .post {
+                padding:0 2em;
+				margin:2em 0 0;
+                text-align:justify;
+            }
+			.date{
+				font-weight:normal;
+				font-size:0.9em;
+				color:#888888;
+			}
+			.comments{
+				padding:1em;
+				margin:0 2em;
+ 				border-bottom:1px dotted #aaaaaa;
+				text-align:center;
+			}
+			#footer{
+				margin:1.5em 3.5em;
+			}
+			a{
+				color:#f05000;
+			}
+			a:hover{
+				color:orange;
+			}
+            #twitter_div div + div {
+                margin-top:.6em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main-container">
+<div class="main-wrapper">
+            <a href="//fasterize.com" class="nostyle">
+                <img src="//fasterize.com/images/loader_s.png" class="logo" style="width:5.6em;" />
+                <span class="logoText">fasterize</span>
+                <p class="baseline">Make it fast, keep it fast</p>
+            </a>
+
+            <div class="nav">
+            	<a href="//fasterize.com" title="Homepage">Accueil</a>
+            	<a href="/" class="current" title="Blog">Blog</a>
+            	<a href="mailto:info@fasterize.com">Contact</a>
+            </div>
+
+            <div class="main-content  yui3-g">
+
+                <div id="posts" class="yui3-u-3-4">
+                    {block:Posts}
+                        {block:Text}
+                            <div class="post text">
+                                {block:Title}
+                                    <h3><a href="{Permalink}">{Title}</a><span class="date">  – {DayOfMonth}/{MonthNumber}/{Year}</span></h3>
+                                {/block:Title}
+                                {Body}
+                            </div>
+                        {/block:Text}
+
+                        {block:Photo}
+                            <div class="post photo">
+                                <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+
+                                {block:Caption}
+                                    <div class="caption">{Caption}</div>
+                                {/block:Caption}
+                            </div>
+                        {/block:Photo}
+
+                        {block:Photoset}
+                            <div class="post photoset">
+                                {Photoset-500}
+
+                                {block:Caption}
+                                    <div class="caption">{Caption}</div>
+                                {/block:Caption}
+                            </div>
+                        {/block:Photoset}
+
+                        {block:Quote}
+                            <div class="post quote">
+                                "{Quote}"
+
+                                {block:Source}
+                                    <div class="source">{Source}</div>
+                                {/block:Source}
+                            </div>
+                        {/block:Quote}
+
+                        {block:Link}
+                            <div class="post link">
+                                <a href="{URL}" class="link" {Target}>{Name}</a>
+
+                                {block:Description}
+                                    <div class="description">{Description}</div>
+                                {/block:Description}
+                            </div>
+                        {/block:Link}
+
+                        {block:Chat}
+                            <div class="post chat">
+                                {block:Title}
+                                    <h3><a href="{Permalink}">{Title}</a></h3>
+                                {/block:Title}
+
+                                <ul class="chat">
+                                    {block:Lines}
+                                        <li class="{Alt} user_{UserNumber}">
+                                            {block:Label}
+                                                <span class="label">{Label}</span>
+                                            {/block:Label}
+
+                                            {Line}
+                                        </li>
+                                    {/block:Lines}
+                                </ul>
+                            </div>
+                        {/block:Chat}
+
+                        {block:Video}
+                            <div class="post video">
+                                {Video-500}
+
+                                {block:Caption}
+                                    <div class="caption">{Caption}</div>
+                                {/block:Caption}
+                            </div>
+                        {/block:Video}
+
+                        {block:Audio}
+                            <div class="post audio">
+                                {AudioPlayerBlack}
+
+                                {block:Caption}
+                                    <div class="caption">{Caption}</div>
+                                {/block:Caption}
+                            </div>
+                        {/block:Audio}
+                        <div class="comments"><a class="dsq-comment-count" href="{Permalink}#disqus_thread">Comments</a></div>
+                    {/block:Posts}
+                    <script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>{block:Permalink}<div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                      /**
+                        * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread]
+                        */
+                      (function() {
+                        var disqus_identifier = 'disqus-{PostID}';
+                       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                       dsq.src = 'http://fasterize.disqus.com/embed.js';
+                       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                      })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=fasterize">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+                    {/block:Permalink}<script type="text/javascript">
+                    var disqus_shortname = 'fasterize';
+                    (function () {
+                      var s = document.createElement('script'); s.async = true;
+                      s.src = 'http://fasterize.disqus.com/count.js';
+                      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                    }());
+                    </script>
+                </div>
+				<div id="sidebar" class="yui3-u-1-4 font13">
+					<p>Fasterize, accélérateur de site Web.</p>
+
+					<p>
+						Venez partager les dernières techniques de la performance Web avec notre toute jeune startup !<br>
+						Mots clés : Webperf, WPO, HTML, JS, CSS, HTTP, Cache, Compression, etc ...
+					</p>
+
+				    <div>
+				        <h3><a href="http://twitter.com/Fasterize">@Fasterize</a></h3>
+				        <div id="twitter_div"></div>
+				    </div>
+
+                    <script>(function(d,h){d.tcallback=function(f){for(var e=[],b=0,g=f.length,d=g-1;b<g;b++){var c=f[b];username=c.user.screen_name;status=c.text.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g,function(a){return'<a href="'+a+'">'+a+"</a>"}).replace(/\B@([_a-z0-9]+)/ig,function(a){return a.charAt(0)+'<a href="http://twitter.com/'+a.substring(1)+'">'+a.substring(1)+"</a>"});when=new Date(c.created_at);when_date=when.getDate();when_month=when.getMonth();e.push('<div><a class="font12 gray" href="http://twitter.com/'+username+"/statuses/"+c.id+'">'+(when_date<10?"0"+when_date:when_date)+"/"+(when_month<9?"0"+(when_month+1):when_month+1)+'</a> <span class="textContent">'+status+"</span></div>");}h.getElementById("twitter_div").innerHTML=e.join("")}})(this,document);</script>
+                    <script defer async src="http://twitter.com/statuses/user_timeline/fasterize.json?callback=tcallback&count=10"></script>
+				</div>
+          </div>
+
+
+            <p id="footer" class="yui3-u-1">
+                {block:PreviousPage}
+                    <a href="{PreviousPage}">&#171; Previous</a>
+                {/block:PreviousPage}
+
+                {block:NextPage}
+                    <a href="{NextPage}">Next &#187;</a>
+                {/block:NextPage}
+
+                <a href="/archive">Archive</a>
+            </p>
+        </div>
+</div>
+
+            <script type="text/javascript">
+
+              var _gaq = _gaq || [];
+              _gaq.push(['_setAccount', 'UA-22652785-1']);
+              _gaq.push(['_trackPageview']);
+              _gaq.push(['_trackPageLoadTime']);
+
+              (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+              })();
+
+            </script>
+    </body>
+</html>
